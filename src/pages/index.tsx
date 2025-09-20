@@ -1,11 +1,15 @@
 import { graphql, Link } from 'gatsby'
 
+import Header from '../components/Header'
+import Footer from 'src/components/Footer'
+
 export default function IndexPage(props: any) {
   const { data } = props
   const postList = data.allMarkdownRemark.nodes
 
   return (
     <>
+      <Header />
       <ul>
         {postList.map((post: any) => {
           return (
@@ -15,6 +19,7 @@ export default function IndexPage(props: any) {
           )
         })}
       </ul>
+      <Footer />
     </>
   )
 }
@@ -29,6 +34,7 @@ export const pageQuery = graphql`
         frontmatter {
           title
           date
+          category
         }
       }
     }

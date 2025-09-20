@@ -20,13 +20,13 @@ export function GlobalStyles() {
           overflow-x: hidden;
           overflow-y: scroll;
           -webkit-overflow-scrolling: touch;
-          background-color: ${Color.primary1};
+          background-color: ${Color.primary2};
         }
 
         html,
         body {
           font-family: var(--font-family) !important;
-          color: ${Color.primary2};
+          color: ${Color.gray100};
           text-rendering: optimizeLegibility;
           -webkit-font-smoothing: antialiased;
 
