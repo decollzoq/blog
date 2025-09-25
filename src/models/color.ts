@@ -3,7 +3,7 @@ import '@emotion/react'
 export const Color = {
   primary0: '#000000',
   primary1: '#111111',
-  primary2: '#FFFFFF',
+  background: '#FFFFFF',
   gray100: '#2B2B2B',
   gray200: '#535353',
   gray300: '#7B7B7B',

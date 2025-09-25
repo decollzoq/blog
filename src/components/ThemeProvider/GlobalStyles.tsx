@@ -20,7 +20,7 @@ export function GlobalStyles() {
           overflow-x: hidden;
           overflow-y: scroll;
           -webkit-overflow-scrolling: touch;
-          background-color: ${Color.primary2};
+          background-color: ${Color.background};
         }
 
         html,
