@@ -19,9 +19,9 @@ export default function PostItem({
     <Item>
       <Thumb />
       <Info>
-        <Cat style={{ marginTop: '16px' }}>
+        <PostInfo style={{ marginTop: '16px' }}>
           {date} {category}
-        </Cat>
+        </PostInfo>
         <Title style={{ marginTop: '8px' }}>{title}</Title>
       </Info>
     </Item>
@@ -44,7 +44,7 @@ export const Thumb = styled.div`
   background: ${Color.gray500};
 `
 
-export const Cat = styled.span`
+export const PostInfo = styled.span`
   font-size: 12px;
   color: ${Color.gray300};
 `
