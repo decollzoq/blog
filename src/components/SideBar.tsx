@@ -40,7 +40,7 @@ export default function SideBar() {
   )
 }
 
-const SideBarWrapper = styled.div`
+const SideBarWrapper = styled.aside`
   position: relative;
   display: flex;
   justify-content: center;
