@@ -3,14 +3,14 @@ import '@emotion/react'
 export const Color = {
   primary0: '#000000',
   primary1: '#111111',
-  primary2: '#FFFFFF',
-  gray0: '#dee2e6',
-  gray1: '#ced4da',
-  gray2: '#adb5bd',
-  gray3: '#495057',
-  purple1: '#6214aa',
-  blue1: '#3184ff',
-  blue2: '#224b8f'
+  background: '#FFFFFF',
+  gray100: '#2B2B2B',
+  gray200: '#535353',
+  gray300: '#7B7B7B',
+  gray400: '#A3A3A3',
+  gray500: '#CBCBCB',
+  gray600: '#F3F3F3',
+  blue1: '#0B60FF'
 }
 
 export type ColorType = typeof Color
