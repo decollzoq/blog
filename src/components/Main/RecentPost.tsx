@@ -3,7 +3,7 @@ import React from 'react'
 import styled from '@emotion/styled'
 import { Color } from 'src/models/color'
 import { Thumb } from './PostItem'
-import { Cat } from './PostItem'
+import { PostInfo } from './PostItem'
 import { Info } from './PostItem'
 
 type Props = React.HTMLAttributes<HTMLElement>
@@ -20,9 +20,9 @@ export default function RecentPostSection({ className, ...rest }: Props) {
       <Heading>Recent Post</Heading>
       <Thumb />
       <Info>
-        <Cat>
+        <PostInfo>
           {dummy_date} {dummy_category}
-        </Cat>
+        </PostInfo>
         <Title style={{ marginTop: '8px' }}>{dummy_title}</Title>
         <Excerpt style={{ marginTop: '12px' }}>{dummy_excerpt}</Excerpt>
       </Info>
