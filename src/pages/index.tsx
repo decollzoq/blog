@@ -55,6 +55,7 @@ export const pageQuery = graphql`
           date(formatString: "YYYY년 MM월 DD일")
           category
         }
+        excerpt
       }
     }
   }
