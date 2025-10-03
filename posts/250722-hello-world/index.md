@@ -2,6 +2,7 @@
 title: '[TIL] HelloWorld'
 date: 2025-07-22
 category: JavaScript 튜토리얼
+thumb: ./thumb_javascript.png
 ---
 
 출처 : https://ko.javascript.info
