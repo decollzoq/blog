@@ -10,13 +10,20 @@ import PostList from 'src/components/Main/PostList'
 export default function IndexPage(props: any) {
   const { data } = props
   const postList = data.allMarkdownRemark.nodes
+
+  const categoryList: string[] = postList.map((post: any) => post.frontmatter.category)
+  const categoryCount = categoryList.reduce<Record<string, number>>((counter, category) => {
+    counter[category] = (counter[category] ?? 0) + 1
+    return counter
+  }, {})
+
   return (
     <>
       <Header />
       <Layout>
-        <SideBar />
+        <SideBar categories={categoryCount} />
         <ContentArea>
-          <PostList />
+          <PostList posts={postList} />
         </ContentArea>
       </Layout>
       <Footer />
@@ -32,7 +39,7 @@ const Layout = styled.div`
   background: ${Color.background};
 `
 const ContentArea = styled.main`
-  width: 1068;
+  width: 1068px;
   min-height: 80vh;
 `
 
@@ -45,7 +52,7 @@ export const pageQuery = graphql`
         }
         frontmatter {
           title
-          date
+          date(formatString: "YYYY년 MM월 DD일")
           category
         }
       }
