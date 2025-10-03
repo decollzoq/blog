@@ -13,8 +13,7 @@ export default function PostItem({ title, category, date, thumb }: PostItemProps
   return (
     <Item>
       <Thumb>
-        {' '}
-        <img src={thumb} />{' '}
+        <img src={thumb} />
       </Thumb>
       <Info>
         <PostInfo style={{ marginTop: '16px' }}>
