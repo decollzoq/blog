@@ -3,23 +3,25 @@ import styled from '@emotion/styled'
 import PostItem from './PostItem'
 import RecentPostSection from './RecentPost'
 
-const DUMMY_POST = Array.from({ length: 6 }).map((_, i) => ({
-  title: `포스트 제목 ${i + 1}`,
-  category: i % 2 ? '카테고리1' : '카테고리2',
-  date: '2025년 9월 20일'
-}))
-
 const RecentFull = styled(RecentPostSection)`
   grid-column: 1 / -1;
   margin-bottom: 48px;
 `
 
-export default function PostList() {
+export default function PostList({ posts }: any) {
+  const [recent, ...rest] = posts
   return (
     <Wrap>
-      <RecentFull />
-      {DUMMY_POST.map((p) => (
-        <PostItem key={p.title} title={p.title} category={p.category} date={p.date} thumb />
+      <RecentFull post={recent} />
+
+      {rest.map((p: any) => (
+        <PostItem
+          key={p.frontmatter.title}
+          title={p.frontmatter.title}
+          category={p.frontmatter.category}
+          date={p.frontmatter.date}
+          thumb={true}
+        />
       ))}
     </Wrap>
   )

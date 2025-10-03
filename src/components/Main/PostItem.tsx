@@ -6,18 +6,13 @@ type PostItemProps = {
   title: string
   category: string
   date: string
-  thumb?: boolean
+  thumb: boolean
 }
 
-export default function PostItem({
-  title,
-  category = '카테고리1',
-  date = '2025년 9월 15일',
-  thumb = true
-}: PostItemProps) {
+export default function PostItem({ title, category, date, thumb }: PostItemProps) {
   return (
     <Item>
-      <Thumb />
+      <Thumb> {thumb} </Thumb>
       <Info>
         <PostInfo style={{ marginTop: '16px' }}>
           {date} {category}
