@@ -54,6 +54,9 @@ export const pageQuery = graphql`
           title
           date(formatString: "YYYY년 MM월 DD일")
           category
+          cover {
+            publicURL
+          }
         }
         excerpt
       }

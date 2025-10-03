@@ -20,7 +20,7 @@ export default function PostList({ posts }: any) {
           title={p.frontmatter.title}
           category={p.frontmatter.category}
           date={p.frontmatter.date}
-          thumb={true}
+          thumb={p.frontmatter.cover.publicURL}
         />
       ))}
     </Wrap>

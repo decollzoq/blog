@@ -6,13 +6,16 @@ type PostItemProps = {
   title: string
   category: string
   date: string
-  thumb: boolean
+  thumb: string
 }
 
 export default function PostItem({ title, category, date, thumb }: PostItemProps) {
   return (
     <Item>
-      <Thumb> {thumb} </Thumb>
+      <Thumb>
+        {' '}
+        <img src={thumb} />{' '}
+      </Thumb>
       <Info>
         <PostInfo style={{ marginTop: '16px' }}>
           {date} {category}
@@ -37,6 +40,14 @@ export const Info = styled.div`
 export const Thumb = styled.div`
   aspect-ratio: 16/9;
   background: ${Color.gray500};
+  overflow: hidden;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
 `
 
 export const PostInfo = styled.span`

@@ -16,7 +16,10 @@ export default function RecentPostSection({ className, post, ...rest }: Props) {
   return (
     <RecentPost className={className} {...rest}>
       <Heading>Recent Post</Heading>
-      <Thumb> {frontmatter.thumb} </Thumb>
+      <Thumb>
+        {' '}
+        <img src={frontmatter.cover.publicURL} />{' '}
+      </Thumb>
       <Info>
         <PostInfo>
           {frontmatter.date} {frontmatter.category}
