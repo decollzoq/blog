@@ -20,9 +20,9 @@ export default function SideBar({ categories }: Props) {
           <Badge data-active='true'> {formatCount(totalCount)}</Badge>
         </CategoryItem>
 
-        {Object.entries(categories).map(([c, count]) => (
-          <CategoryItem key={c} data-active='false'>
-            <Title>{c}</Title>
+        {Object.entries(categories).map(([category, count]) => (
+          <CategoryItem key={category} data-active='false'>
+            <Title>{category}</Title>
             <Badge data-active='false'>{formatCount(count)}</Badge>
           </CategoryItem>
         ))}
