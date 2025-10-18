@@ -1,26 +1,27 @@
 import React from 'react'
 import styled from '@emotion/styled'
-import PostItem from './PostItem'
+import PostItem from '../PostItem'
 import RecentPostSection from './RecentPost'
+import { PostSummary } from 'src/type'
 
 const RecentFull = styled(RecentPostSection)`
   grid-column: 1 / -1;
   margin-bottom: 48px;
 `
 
-export default function PostList({ posts }: any) {
+export default function PostList({ posts }: { posts: PostSummary[] }) {
   const [recent, ...rest] = posts
   return (
     <Wrap>
       <RecentFull post={recent} />
 
-      {rest.map((p: any) => (
+      {rest.map((post) => (
         <PostItem
-          key={p.frontmatter.title}
-          title={p.frontmatter.title}
-          category={p.frontmatter.category}
-          date={p.frontmatter.date}
-          thumb={p.frontmatter.cover.publicURL}
+          key={post.id}
+          title={post.frontmatter.title}
+          category={post.frontmatter.category}
+          date={post.frontmatter.date}
+          cover={post.frontmatter.cover}
         />
       ))}
     </Wrap>

@@ -2,16 +2,17 @@
 import React from 'react'
 import styled from '@emotion/styled'
 import { Color } from 'src/models/color'
-import { Thumb } from './PostItem'
-import { PostInfo } from './PostItem'
-import { Info } from './PostItem'
+import { Thumb } from '../PostItem'
+import { PostInfo } from '../PostItem'
+import { Info } from '../PostItem'
+import { PostSummary } from 'src/type'
 
 type Props = React.HTMLAttributes<HTMLElement> & {
-  post?: any
+  post: PostSummary
 }
 
 export default function RecentPostSection({ className, post, ...rest }: Props) {
-  const { fields, frontmatter, excerpt } = post
+  const { frontmatter, excerpt } = post
 
   return (
     <RecentPost className={className} {...rest}>
