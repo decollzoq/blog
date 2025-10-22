@@ -1,4 +1,4 @@
-import { graphql, Link } from 'gatsby'
+import { graphql, PageProps } from 'gatsby'
 import styled from '@emotion/styled'
 import { Color } from 'src/models/color'
 import SideBar from 'src/components/SideBar'
@@ -6,9 +6,9 @@ import SideBar from 'src/components/SideBar'
 import Header from '../components/Header'
 import Footer from 'src/components/Footer'
 import PostList from 'src/components/Main/PostList'
+import { PostSummary } from 'src/type'
 
-export default function IndexPage(props: any) {
-  const { data } = props
+export default function IndexPage({ data }: PageProps<{ allMarkdownRemark: { nodes: PostSummary[] } }>) {
   const postList = data.allMarkdownRemark.nodes
 
   const categoryList: string[] = postList.map((post: any) => post.frontmatter.category)
