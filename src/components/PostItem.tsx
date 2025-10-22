@@ -2,7 +2,7 @@ import React from 'react'
 import styled from '@emotion/styled'
 import { Color } from 'src/models/color'
 
-type PostItemProps = {
+interface PostItemProps {
   title: string
   category: string
   date: string
