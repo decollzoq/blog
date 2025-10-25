@@ -6,6 +6,7 @@
   "dependencies": {
     "@emotion/react": "^11.11.3",
     "@emotion/styled": "^11.11.0",
+    "dayjs": "^1.11.18",
     "gatsby": "^5.13.2",
     "gatsby-plugin-emotion": "^8.13.1",
     "gatsby-plugin-gatsby-cloud": "^5.13.1",
