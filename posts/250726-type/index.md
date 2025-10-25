@@ -2,6 +2,7 @@
 title: '[TIL] 자료형'
 date: 2025-07-26
 category: JavaScript 튜토리얼
+cover: ./thumb_javascript.png
 ---
 
 출처 : https://ko.javascript.info

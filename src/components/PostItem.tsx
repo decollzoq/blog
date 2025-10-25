@@ -2,22 +2,21 @@ import React from 'react'
 import styled from '@emotion/styled'
 import { Color } from 'src/models/color'
 
-type PostItemProps = {
+interface PostItemProps {
   title: string
   category: string
   date: string
-  thumb?: boolean
+  cover: {
+    publicURL: string
+  }
 }
 
-export default function PostItem({
-  title,
-  category = '카테고리1',
-  date = '2025년 9월 15일',
-  thumb = true
-}: PostItemProps) {
+export default function PostItem({ title, category, date, cover }: PostItemProps) {
   return (
     <Item>
-      <Thumb />
+      <Thumb>
+        <img src={cover.publicURL} />
+      </Thumb>
       <Info>
         <PostInfo style={{ marginTop: '16px' }}>
           {date} {category}
@@ -42,6 +41,14 @@ export const Info = styled.div`
 export const Thumb = styled.div`
   aspect-ratio: 16/9;
   background: ${Color.gray500};
+  overflow: hidden;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
 `
 
 export const PostInfo = styled.span`

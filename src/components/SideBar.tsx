@@ -3,36 +3,27 @@ import styled from '@emotion/styled'
 import { Color } from 'src/models/color'
 import { Title } from './Header'
 
-type Category = { name: string; count: number; icon: string; active: boolean }
-
-// TODO : 하드코딩 -> 데이터 연결로 변경, active -> 클릭 이벤트로 변경
-const DUMMY_CATEGORY: Category[] = [
-  { name: '카테고리 1', count: 1, icon: '⭐️', active: false },
-  { name: '카테고리 2', count: 99, icon: '💡', active: false }
-]
-
-const calcTotal = (items: Category[]) => items.reduce((sum, c) => sum + c.count, 0)
 const formatCount = (n: number) => (n > 99 ? '99+' : String(n))
-const hasActiveCategory = (items: Category[]) => items.some((it) => it.active)
 
-export default function SideBar() {
-  const totalCount = calcTotal(DUMMY_CATEGORY)
-  const isAnyActive = hasActiveCategory(DUMMY_CATEGORY)
+type Props = {
+  categories: Record<string, number>
+}
+
+export default function SideBar({ categories }: Props) {
+  const totalCount = Object.values(categories).reduce((sum, count) => sum + count, 0)
 
   return (
     <SideBarWrapper>
       <CategoryListWrapper>
-        <CategoryItem data-active={!isAnyActive}>
+        <CategoryItem data-active='true'>
           <Title>🏠️ All Posts</Title>
-          <Badge data-active={!isAnyActive}> {formatCount(totalCount)}</Badge>
+          <Badge data-active='true'> {formatCount(totalCount)}</Badge>
         </CategoryItem>
 
-        {DUMMY_CATEGORY.map((c) => (
-          <CategoryItem key={c.name} data-active={c.active}>
-            <Title>
-              {c.icon} {c.name}
-            </Title>
-            <Badge data-active={c.active}>{formatCount(c.count)}</Badge>
+        {Object.entries(categories).map(([category, count]) => (
+          <CategoryItem key={category} data-active='false'>
+            <Title>{category}</Title>
+            <Badge data-active='false'>{formatCount(count)}</Badge>
           </CategoryItem>
         ))}
       </CategoryListWrapper>
@@ -56,8 +47,9 @@ const CategoryListWrapper = styled.div`
   overflow-y: auto;
 `
 
-// TODO : 버튼으로 변경해서, 선택된 카테고리 기준으로 포스트 필터링
-const CategoryItem = styled.div`
+const CategoryItem = styled.button`
+  box-sizing: border-box;
+
   position: relative;
   display: flex;
   border-radius: 8px;

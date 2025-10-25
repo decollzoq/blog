@@ -1,25 +1,28 @@
 import React from 'react'
 import styled from '@emotion/styled'
-import PostItem from './PostItem'
+import PostItem from '../PostItem'
 import RecentPostSection from './RecentPost'
-
-const DUMMY_POST = Array.from({ length: 6 }).map((_, i) => ({
-  title: `포스트 제목 ${i + 1}`,
-  category: i % 2 ? '카테고리1' : '카테고리2',
-  date: '2025년 9월 20일'
-}))
+import { PostSummary } from 'src/type'
 
 const RecentFull = styled(RecentPostSection)`
   grid-column: 1 / -1;
   margin-bottom: 48px;
 `
 
-export default function PostList() {
+export default function PostList({ posts }: { posts: PostSummary[] }) {
+  const [recent, ...rest] = posts
   return (
     <Wrap>
-      <RecentFull />
-      {DUMMY_POST.map((p) => (
-        <PostItem key={p.title} title={p.title} category={p.category} date={p.date} thumb />
+      <RecentFull post={recent} />
+
+      {rest.map((post) => (
+        <PostItem
+          key={post.id}
+          title={post.frontmatter.title}
+          category={post.frontmatter.category}
+          date={post.frontmatter.date}
+          cover={post.frontmatter.cover}
+        />
       ))}
     </Wrap>
   )

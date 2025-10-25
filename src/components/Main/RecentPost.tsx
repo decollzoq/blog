@@ -2,29 +2,30 @@
 import React from 'react'
 import styled from '@emotion/styled'
 import { Color } from 'src/models/color'
-import { Thumb } from './PostItem'
-import { PostInfo } from './PostItem'
-import { Info } from './PostItem'
+import { Thumb } from '../PostItem'
+import { PostInfo } from '../PostItem'
+import { Info } from '../PostItem'
+import { PostSummary } from 'src/type'
 
-type Props = React.HTMLAttributes<HTMLElement>
+type Props = React.HTMLAttributes<HTMLElement> & {
+  post: PostSummary
+}
 
-export default function RecentPostSection({ className, ...rest }: Props) {
-  const dummy_date = '2025년 9월 1일'
-  const dummy_category = '<카테고리 1>'
-  const dummy_title = 'Title'
-  const dummy_excerpt =
-    '이 부분의 내용은 velog 처럼 포스트 내용을 공백 포함 100자 정도만 미리보기로 보이거나 포스트를 등록할 때 짧은 글 받는 걸로 할 예정입니다. 만약 3줄이 넘는다면 말 줄임표를 사용할 것입니다. 안녕하세요.'
+export default function RecentPostSection({ className, post, ...rest }: Props) {
+  const { frontmatter, excerpt } = post
 
   return (
     <RecentPost className={className} {...rest}>
       <Heading>Recent Post</Heading>
-      <Thumb />
+      <Thumb>
+        <img src={frontmatter.cover.publicURL} />
+      </Thumb>
       <Info>
         <PostInfo>
-          {dummy_date} {dummy_category}
+          {frontmatter.date} {frontmatter.category}
         </PostInfo>
-        <Title style={{ marginTop: '8px' }}>{dummy_title}</Title>
-        <Excerpt style={{ marginTop: '12px' }}>{dummy_excerpt}</Excerpt>
+        <Title style={{ marginTop: '8px' }}>{frontmatter.title}</Title>
+        <Excerpt style={{ marginTop: '12px' }}>{excerpt}</Excerpt>
       </Info>
     </RecentPost>
   )

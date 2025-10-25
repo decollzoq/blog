@@ -2,6 +2,7 @@
 title: '[TIL] 엄격 모드'
 date: 2025-07-24
 category: JavaScript 튜토리얼
+cover: ./thumb_javascript.png
 ---
 
 출처 : https://ko.javascript.info
