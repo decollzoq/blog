@@ -1,4 +1,5 @@
 import { graphql } from 'gatsby'
+import { MarkDown } from 'src/components/Markdown'
 
 export default function PostPage(props: any) {
   const {
@@ -15,7 +16,7 @@ export default function PostPage(props: any) {
   return (
     <>
       <h1>{title}</h1>
-      <main dangerouslySetInnerHTML={{ __html: html }} />
+      <MarkDown html={html} />
     </>
   )
 }
