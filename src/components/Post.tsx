@@ -38,27 +38,6 @@ export default function PostPage({ data }: Props) {
   )
 }
 
-export const pageQuery = graphql`
-  query PostPageBySlug($slug: String!) {
-    markdownRemark(fields: { slug: { eq: $slug } }) {
-      id
-      html
-      excerpt(truncate: true)
-      fields {
-        slug
-      }
-      frontmatter {
-        title
-        date
-        category
-        cover {
-          publicURL
-        }
-      }
-    }
-  }
-`
-
 const PageWrap = styled.main`
   display: grid;
   grid-template-columns: minmax(0, 1fr) 220px; /* 본문 + 얇은 TOC */

@@ -29,7 +29,7 @@ export const pageQuery = graphql`
       frontmatter {
         title
         date
-        categroy
+        category
         cover {
           publicURL
         }
