@@ -6,16 +6,26 @@ import { Thumb } from '../PostItem'
 import { PostInfo } from '../PostItem'
 import { Info } from '../PostItem'
 import { PostSummary } from 'src/type'
+import { navigate } from 'gatsby'
 
 type Props = React.HTMLAttributes<HTMLElement> & {
   post: PostSummary
 }
 
 export default function RecentPostSection({ className, post, ...rest }: Props) {
-  const { frontmatter, excerpt } = post
-
+  const { frontmatter, excerpt, fields } = post
+  const to = fields.slug.startsWith('/') ? fields.slug : `/${fields.slug}`
   return (
-    <RecentPost className={className} {...rest}>
+    <RecentPost
+      className={className}
+      {...rest}
+      onClick={() => navigate(to)}
+      onMouseDown={(e) => {
+        if (e.button === 1) {
+          window.open(`${window.location.origin}${to}`, '_blank')
+        }
+      }}
+    >
       <Heading>Recent Post</Heading>
       <Thumb>
         <img src={frontmatter.cover.publicURL} />
@@ -43,6 +53,11 @@ const RecentPost = styled.section`
   display: grid;
   grid-template-columns: 7fr 3fr;
   gap: 20px;
+  cursor: pointer;
+  transition: transform 0.25s ease;
+  &:hover {
+    transform: translateY(-4px);
+  }
 `
 
 const Excerpt = styled.p`

@@ -10,12 +10,11 @@ const RecentFull = styled(RecentPostSection)`
 `
 
 export default function PostList({ posts }: { posts: PostSummary[] }) {
-  const [recent, ...rest] = posts
   return (
     <Wrap>
-      <RecentFull post={recent} />
+      <RecentFull post={posts[0]} />
 
-      {rest.map((post) => (
+      {posts.map((post) => (
         <PostItem
           key={post.id}
           title={post.frontmatter.title}
