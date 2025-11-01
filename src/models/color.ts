@@ -10,7 +10,8 @@ export const Color = {
   gray400: '#A3A3A3',
   gray500: '#CBCBCB',
   gray600: '#F3F3F3',
-  blue1: '#0B60FF'
+  blue1: '#0B60FF',
+  red1: '#E75458'
 }
 
 export type ColorType = typeof Color

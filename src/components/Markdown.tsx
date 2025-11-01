@@ -305,11 +305,11 @@ const Article = styled.article`
 
     p > code {
       font-weight: 600;
-      color: ${theme.color.blue1};
+      color: ${theme.color.red1};
       white-space: inherit;
       padding: 2px 4px;
       border-radius: 4px;
-      background-color: ${theme.color.primary1};
+      background-color: ${theme.color.gray600};
       letter-spacing: unset;
 
       & * span {
