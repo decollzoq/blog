@@ -28,3 +28,15 @@ export interface Post {
 export interface CoverImage {
   publicURL: string
 }
+
+export interface PostDetail extends PostSummary {
+  html: string
+}
+
+export interface IndexPageQuery {
+  allMarkdownRemark: { nodes: PostSummary[] }
+}
+
+export interface PostPageProps {
+  markdownRemark: PostDetail
+}

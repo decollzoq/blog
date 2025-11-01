@@ -22,6 +22,7 @@ export default function PostList({ posts }: { posts: PostSummary[] }) {
           category={post.frontmatter.category}
           date={post.frontmatter.date}
           cover={post.frontmatter.cover}
+          slug={post.fields.slug}
         />
       ))}
     </Wrap>

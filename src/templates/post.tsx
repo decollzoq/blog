@@ -4,8 +4,10 @@ export default function PostPage(props: any) {
   const {
     data: {
       markdownRemark: {
+        id,
         html,
-        frontmatter: { title }
+        excerpt,
+        frontmatter: { title, category, date, cover }
       }
     }
   } = props
@@ -21,9 +23,16 @@ export default function PostPage(props: any) {
 export const pageQuery = graphql`
   query ($slug: String!) {
     markdownRemark(fields: { slug: { eq: $slug } }) {
+      id
       html
+      excerpt
       frontmatter {
         title
+        date
+        category
+        cover {
+          publicURL
+        }
       }
     }
   }
