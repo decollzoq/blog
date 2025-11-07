@@ -44,6 +44,9 @@ importers:
       gatsby-plugin-typescript:
         specifier: ^5.13.1
         version: 5.14.0(gatsby@5.14.1(babel-eslint@10.1.0(eslint@8.57.1))(encoding@0.1.13)(eslint-import-resolver-typescript@3.8.4)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(type-fest@0.21.3)(typescript@5.8.2)(webpack-hot-middleware@2.26.1))
+      gatsby-remark-autolink-headers:
+        specifier: ^6.15.0
+        version: 6.15.0(gatsby@5.14.1(babel-eslint@10.1.0(eslint@8.57.1))(encoding@0.1.13)(eslint-import-resolver-typescript@3.8.4)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(type-fest@0.21.3)(typescript@5.8.2)(webpack-hot-middleware@2.26.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       gatsby-remark-copy-linked-files:
         specifier: ^6.14.0
         version: 6.14.0(gatsby@5.14.1(babel-eslint@10.1.0(eslint@8.57.1))(encoding@0.1.13)(eslint-import-resolver-typescript@3.8.4)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(type-fest@0.21.3)(typescript@5.8.2)(webpack-hot-middleware@2.26.1))
@@ -3504,6 +3507,14 @@ packages:
     engines: {node: '>=18.0.0'}
     peerDependencies:
       '@gatsbyjs/reach-router': ^2.0.0
+      react: ^18.0.0 || ^0.0.0
+      react-dom: ^18.0.0 || ^0.0.0
+
+  gatsby-remark-autolink-headers@6.15.0:
+    resolution: {integrity: sha512-DXUcMqbWZIKMwIk5+EhSwfnaQMOKAs8+InVVpCLdV1Dl/Jgt+QpwLOEuaao9wDPTXQY67PGglnc6MNjoF6XM+A==}
+    engines: {node: '>=18.0.0'}
+    peerDependencies:
+      gatsby: ^5.0.0-next
       react: ^18.0.0 || ^0.0.0
       react-dom: ^18.0.0 || ^0.0.0
 
@@ -11111,6 +11122,17 @@ snapshots:
       prop-types: 15.8.1
       react: 18.3.1
       react-dom: 18.3.1(react@18.3.1)
+
+  gatsby-remark-autolink-headers@6.15.0(gatsby@5.14.1(babel-eslint@10.1.0(eslint@8.57.1))(encoding@0.1.13)(eslint-import-resolver-typescript@3.8.4)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(type-fest@0.21.3)(typescript@5.8.2)(webpack-hot-middleware@2.26.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1):
+    dependencies:
+      '@babel/runtime': 7.26.9
+      gatsby: 5.14.1(babel-eslint@10.1.0(eslint@8.57.1))(encoding@0.1.13)(eslint-import-resolver-typescript@3.8.4)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(type-fest@0.21.3)(typescript@5.8.2)(webpack-hot-middleware@2.26.1)
+      github-slugger: 1.5.0
+      lodash: 4.17.21
+      mdast-util-to-string: 2.0.0
+      react: 18.3.1
+      react-dom: 18.3.1(react@18.3.1)
+      unist-util-visit: 2.0.3
 
   gatsby-remark-copy-linked-files@6.14.0(gatsby@5.14.1(babel-eslint@10.1.0(eslint@8.57.1))(encoding@0.1.13)(eslint-import-resolver-typescript@3.8.4)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(type-fest@0.21.3)(typescript@5.8.2)(webpack-hot-middleware@2.26.1)):
     dependencies:
