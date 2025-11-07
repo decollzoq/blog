@@ -131,12 +131,12 @@ alret(birthday) // udefined
 
 ---
 
-## typeof 연산자
+# typeof 연산자
 
 인수의 자료형을 반환하는 연산자이다. (반환 타입은 문자열이다.)
 자료형에 따라 처리 방식을 다르게 할 때, 변수의 자료형을 빠르게 알아내고자 할 때 사용한다.
 
-#### 사용법
+## 사용법
 
 연산자로 사용하는 것고 함수로 사용하는 두 가지 방법이 있는데, 결과는 동일하다.
 
@@ -166,16 +166,16 @@ typeof alert // "function"
 
 >
 
-##### `typeof Math`
+### `typeof Math`
 
 - `Math`는 수학 연산을 제공하는 내장 객체이므로 "object"를 반환한다.
 
-##### ⚠️ `typeof null`
+### ⚠️ `typeof null`
 
 - 언어 자체의 오류지만 하위 호환성을 유지하기 위해 "object"로 남겨진 상황이다.
 - `null`은 객체가 아님에 유의하자.
 
-##### ⚠️ `typeof alert`
+### ⚠️ `typeof alert`
 
 - `typeof`는 피연산자가 함수면 "function"을 반환한다.
 - 자료타입에 "function"은 없다. 함수는 객체형에 속한다.
@@ -183,19 +183,19 @@ typeof alert // "function"
 
 ---
 
-## 과제
+# 과제
 
-### 문제
+## 문제
 
 ![](https://velog.velcdn.com/images/decollzoq/post/c40ba802-a8bc-4f69-82d5-8e2cce670260/image.png)
 
-### 풀이
+## 풀이
 
-`alert(`hello ${1}`);
+alert(`hello ${1}`);
 
 - 출력 결과 : hello 1
 
-`alert(`hello ${"name"}`);
+alert(`hello ${"name"}`);
 
 - 출력 결과 : hello name
 - "name"은 문자열이다.
