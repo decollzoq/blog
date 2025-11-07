@@ -16,16 +16,7 @@ export default function RecentPostSection({ className, post, ...rest }: Props) {
   const { frontmatter, excerpt, fields } = post
   const to = fields.slug.startsWith('/') ? fields.slug : `/${fields.slug}`
   return (
-    <RecentPost
-      className={className}
-      {...rest}
-      onClick={() => navigate(to)}
-      onMouseDown={(e) => {
-        if (e.button === 1) {
-          window.open(`${window.location.origin}${to}`, '_blank')
-        }
-      }}
-    >
+    <RecentPost className={className} {...rest} onClick={() => navigate(to)}>
       <Heading>Recent Post</Heading>
       <Thumb>
         <img src={frontmatter.cover.publicURL} />

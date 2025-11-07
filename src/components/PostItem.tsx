@@ -16,14 +16,7 @@ interface PostItemProps {
 export default function PostItem({ title, category, date, cover, slug }: PostItemProps) {
   const to = slug.startsWith('/') ? slug : `/${slug}`
   return (
-    <Item
-      onClick={() => navigate(to)}
-      onMouseDown={(e) => {
-        if (e.button === 1) {
-          window.open(`${window.location.origin}${to}`, `_blank`)
-        }
-      }}
-    >
+    <Item onClick={() => navigate(to)}>
       <Thumb>
         <img src={cover.publicURL} />
       </Thumb>
