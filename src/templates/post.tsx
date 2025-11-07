@@ -5,6 +5,7 @@ import { MarkDown } from 'src/components/Markdown'
 import { PostPageProps } from 'src/type'
 import { Color } from 'src/models/color'
 import TOC from 'src/components/TOC'
+import Comments from 'src/components/Comments'
 interface Props extends PageProps<PostPageProps> {}
 
 export default function PostPage({ data }: Props) {
@@ -27,10 +28,9 @@ export default function PostPage({ data }: Props) {
         <article style={{ marginTop: '60px' }}>
           <MarkDown html={html} />
         </article>
-        <ReactionBar style={{ margin: '36px 0 8px' }}>
-          <button>좋아요</button>
-          <button>공유</button>
-        </ReactionBar>
+        <CommentsWrapper>
+          <Comments />
+        </CommentsWrapper>
       </Post>
       <TOC tableOfContents={tableOfContents} />
     </PageWrap>
@@ -94,13 +94,8 @@ const Info = styled.div`
   font-size: 14px;
 `
 
-const ReactionBar = styled.div`
-  display: flex;
-  justify-content: center;
-  gap: 12px;
-  button {
-    background: ${Color.gray600};
-    padding: 5px;
-    cursor: pointer;
-  }
+const CommentsWrapper = styled.section`
+  margin-top: 160px;
+  padding-top: 40px;
+  border-top: 1px solid ${Color.gray400};
 `
