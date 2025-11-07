@@ -4,11 +4,12 @@ import { graphql, PageProps } from 'gatsby'
 import { MarkDown } from 'src/components/Markdown'
 import { PostPageProps } from 'src/type'
 import { Color } from 'src/models/color'
-
+import TOC from 'src/components/TOC'
 interface Props extends PageProps<PostPageProps> {}
 
 export default function PostPage({ data }: Props) {
   const {
+    tableOfContents,
     html,
     excerpt,
     fields: { slug },
@@ -23,16 +24,15 @@ export default function PostPage({ data }: Props) {
         <Info style={{ marginTop: '12px' }}>
           {dayjs(date).format('YYYY년 M월 D일')} · <em>{`< ${category} >`}</em>
         </Info>
-        <Divider style={{ marginTop: '16px', marginLeft: '0px' }}></Divider>
         <article style={{ marginTop: '60px' }}>
           <MarkDown html={html} />
         </article>
-
         <ReactionBar style={{ margin: '36px 0 8px' }}>
           <button>좋아요</button>
           <button>공유</button>
         </ReactionBar>
       </Post>
+      <TOC tableOfContents={tableOfContents} />
     </PageWrap>
   )
 }
@@ -42,6 +42,7 @@ export const pageQuery = graphql`
     markdownRemark(fields: { slug: { eq: $slug } }) {
       id
       html
+      tableOfContents
       excerpt(truncate: true)
       fields {
         slug
@@ -60,9 +61,9 @@ export const pageQuery = graphql`
 
 const PageWrap = styled.main`
   display: grid;
-  grid-template-columns: minmax(0, 1fr) 220px; /* 본문 + 얇은 TOC */
-  gap: 28px;
-  max-width: 1100px;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 72px;
+  max-width: 1000px;
   margin: 0 auto;
   padding: 24px 16px 80px;
   @media (max-width: 980px) {
@@ -102,9 +103,4 @@ const ReactionBar = styled.div`
     padding: 5px;
     cursor: pointer;
   }
-`
-
-const Divider = styled.hr`
-  border: none;
-  border-top: 1px solid ${Color.gray400};
 `
