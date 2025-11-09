@@ -1,12 +1,12 @@
 import React, { useEffect, useRef } from 'react'
 
-type Props = { theme?: string }
-
 export default function Comments() {
   const ref = useRef<HTMLDivElement | null>(null)
 
   useEffect(() => {
-    if (!ref.current) return
+    if (!ref.current) {
+      return
+    }
     ref.current.innerHTML = ''
 
     const s = document.createElement('script')
@@ -20,7 +20,9 @@ export default function Comments() {
     ref.current.appendChild(s)
 
     return () => {
-      if (ref.current) ref.current.innerHTML = ''
+      if (ref.current) {
+        ref.current.innerHTML = ''
+      }
     }
   }, [])
 
