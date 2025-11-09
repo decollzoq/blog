@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from '@emotion/styled'
 import { Color } from 'src/models/color'
+import { navigate } from 'gatsby'
 
 interface PostItemProps {
   title: string
@@ -9,11 +10,13 @@ interface PostItemProps {
   cover: {
     publicURL: string
   }
+  slug: string
 }
 
-export default function PostItem({ title, category, date, cover }: PostItemProps) {
+export default function PostItem({ title, category, date, cover, slug }: PostItemProps) {
+  const to = slug.startsWith('/') ? slug : `/${slug}`
   return (
-    <Item>
+    <Item onClick={() => navigate(to)}>
       <Thumb>
         <img src={cover.publicURL} />
       </Thumb>
@@ -30,6 +33,11 @@ export default function PostItem({ title, category, date, cover }: PostItemProps
 const Item = styled.article`
   display: flex;
   flex-direction: column;
+  cursor: pointer;
+  transition: transform 0.25s ease;
+  &:hover {
+    transform: translateY(-4px);
+  }
 `
 
 export const Info = styled.div`

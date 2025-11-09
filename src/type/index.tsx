@@ -31,6 +31,7 @@ export interface CoverImage {
 
 export interface PostDetail extends PostSummary {
   html: string
+  tableOfContents: string
 }
 
 export interface IndexPageQuery {

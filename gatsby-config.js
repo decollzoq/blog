@@ -46,7 +46,8 @@ module.exports = {
               theme: 'Dark+ (default dark)'
             }
           },
-          `gatsby-remark-gifs`
+          `gatsby-remark-gifs`,
+          `gatsby-remark-autolink-headers`
         ]
       }
     },

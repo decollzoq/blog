@@ -1,6 +1,10 @@
 const path = require('path')
 const { createFilePath } = require('gatsby-source-filesystem')
 
+const CATEGORY_SLUG_MAP = {
+  'JavaScript 튜토리얼': 'javascript-tutorial'
+}
+
 exports.onCreateBabelConfig = ({ actions }) => {
   actions.setBabelPlugin({
     name: '@babel/plugin-transform-react-jsx',
@@ -21,10 +25,8 @@ exports.createSchemaCustomization = ({ actions }) => {
     type Frontmatter {
       title: String!
       date: Date! @dateformat
-      tags: [String!]!
+      category: String!
       cover: File @fileByRelativePath
-      series: String
-      draft: Boolean
     }
   `
 
@@ -34,7 +36,7 @@ exports.createSchemaCustomization = ({ actions }) => {
 exports.onCreateNode = async ({ node, actions, getNode }) => {
   const { createNodeField } = actions
   if (node.internal.type === 'MarkdownRemark') {
-    const value = createFilePath({
+    const slug = createFilePath({
       node,
       getNode
     })
@@ -42,7 +44,7 @@ exports.onCreateNode = async ({ node, actions, getNode }) => {
     createNodeField({
       node,
       name: 'slug',
-      value: `${value}`
+      value: `${slug}`
     })
   }
 }
@@ -54,6 +56,7 @@ exports.createPages = async ({ graphql, actions }) => {
   } = await graphql(`
     {
       allMarkdownRemark(sort: { frontmatter: { date: DESC } }) {
+        distinct(field: frontmatter___category)
         nodes {
           fields {
             slug
@@ -62,6 +65,16 @@ exports.createPages = async ({ graphql, actions }) => {
       }
     }
   `)
+
+  allMarkdownRemark.distinct.forEach((category) => {
+    const categorySlug = CATEGORY_SLUG_MAP[category]
+    createPage({
+      path: `/category/${categorySlug}/`,
+      component: path.resolve(`./src/templates/category.tsx`),
+      context: { category: category, categorySlug: categorySlug }
+    })
+  })
+
   allMarkdownRemark.nodes.forEach((post) => {
     createPage({
       path: post.fields.slug,
