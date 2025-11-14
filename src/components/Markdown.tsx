@@ -96,7 +96,7 @@ const Article = styled.article`
       position: relative;
       color: ${theme.color.primary1};
       line-height: 1.2;
-      scroll-margin-top: 60px;
+      scroll-margin-top: 80px;
       letter-spacing: -0.02rem;
       font-weight: 600;
       background: none;

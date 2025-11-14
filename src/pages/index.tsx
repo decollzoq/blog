@@ -7,6 +7,7 @@ import Header from '../components/Header'
 import Footer from 'src/components/Footer'
 import PostList from 'src/components/Main/PostList'
 import { PostSummary } from 'src/type'
+import { useEffect, useState, useRef } from 'react'
 
 export default function IndexPage({ data }: PageProps<{ allMarkdownRemark: { nodes: PostSummary[] } }>) {
   const postList = data.allMarkdownRemark.nodes
@@ -16,10 +17,25 @@ export default function IndexPage({ data }: PageProps<{ allMarkdownRemark: { nod
     counter[category] = (counter[category] ?? 0) + 1
     return counter
   }, {})
+  const [isTopArea, setIsTopArea] = useState(true)
 
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentY = window.scrollY
+      if (currentY < 50) {
+        setIsTopArea(true)
+      } else {
+        setIsTopArea(false)
+      }
+    }
+    window.addEventListener('scroll', handleScroll)
+    return () => {
+      window.removeEventListener('scroll', handleScroll)
+    }
+  }, [])
   return (
     <>
-      <Header />
+      <Header isTopArea={isTopArea} />
       <Layout>
         <SideBar categories={categoryCount} />
         <ContentArea>
@@ -35,7 +51,8 @@ const Layout = styled.div`
   display: grid;
   grid-template-columns: 272px 1fr;
   gap: 124px;
-  max-width: 1464px;
+  width: 100%;
+  max-width: 1200px;
   background: ${Color.background};
 `
 const ContentArea = styled.main`

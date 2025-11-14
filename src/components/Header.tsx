@@ -1,41 +1,55 @@
 import styled from '@emotion/styled'
 import { Color } from 'src/models/color'
-
-const PROFILE_IMAGE = 'https://i.ifh.cc/mpapcv.jpg'
+import { navigate } from 'gatsby'
 
 const ProfileImageWrapper = styled.img`
   width: 44px;
   height: 44px;
   border-radius: 50%;
 `
+interface HeaderProps {
+  isTopArea: boolean
+}
 
-export default function Header() {
+export default function Header({ isTopArea }: HeaderProps) {
   return (
-    <HeaderWrapper>
-      <ProfileImageWrapper src={PROFILE_IMAGE} alt='Profile Iamge' />
-      <Title style={{ marginTop: '12px', marginLeft: '12px' }}>박민선</Title>
+    <HeaderWrapper isTopArea={isTopArea}>
+      <Anchor onClick={() => navigate('/')} style={{ marginTop: '12px', marginLeft: '12px' }}>
+        <Title> Minseon._. </Title>
+      </Anchor>
     </HeaderWrapper>
   )
 }
 
-const HeaderWrapper = styled.header`
+const HeaderWrapper = styled.header<{ isTopArea: boolean }>`
   position: sticky;
   z-index: 1;
-  flex-direction: row;
   top: 0;
   left: 0;
   display: flex;
   width: 100%;
-  height: 77px;
-  padding: 12px 10px 12px 28px;
+  padding: 0.75rem 1.5rem 1.5rem 1.5rem;
   margin: 0 0 0 0;
   background-color: ${Color.background};
+  border-bottom: ${({ isTopArea }) => (isTopArea ? 'none' : `1px solid ${Color.gray600}`)};
+  box-shadow: ${({ isTopArea }) => (isTopArea ? 'none' : `0 1px 4px rgba(0, 0, 0, 0.05)`)};
+  align-items: center;
+  justify-content: center;
 `
 
-export const Title = styled.div`
-  text-align: left;
-  font-size: 20px;
+const Anchor = styled.a`
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  max-width: 45vw;
+  margin: 0 auto;
+  cursor: pointer;
+  flex-direction: row;
+`
+
+const Title = styled.div`
+  font-size: 24px;
   font-weight: bold;
   color: ${Color.gray100};
-  width: fit-content;
 `

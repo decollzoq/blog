@@ -4,8 +4,10 @@ import { graphql, PageProps } from 'gatsby'
 import { MarkDown } from 'src/components/Markdown'
 import { PostPageProps } from 'src/type'
 import { Color } from 'src/models/color'
+import Header from 'src/components/Header'
 import TOC from 'src/components/TOC'
 import Comments from 'src/components/Comments'
+import { useEffect, useState } from 'react'
 interface Props extends PageProps<PostPageProps> {}
 
 export default function PostPage({ data }: Props) {
@@ -17,23 +19,42 @@ export default function PostPage({ data }: Props) {
     frontmatter: { title, date, category, cover }
   } = data.markdownRemark
 
+  const [isTopArea, setIsTopArea] = useState(true)
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentY = window.scrollY
+      if (currentY < 50) {
+        setIsTopArea(true)
+      } else {
+        setIsTopArea(false)
+      }
+    }
+    window.addEventListener('scroll', handleScroll)
+    return () => {
+      window.removeEventListener('scroll', handleScroll)
+    }
+  }, [])
   return (
-    <PageWrap>
-      <Post>
-        {<Cover src={cover.publicURL} alt={`${title} 커버`} style={{ margin: '12px 0 4px' }} />}
-        <Title style={{ margin: '12px 0 6px' }}>{title}</Title>
-        <Info style={{ marginTop: '12px' }}>
-          {dayjs(date).format('YYYY년 M월 D일')} · <em>{`< ${category} >`}</em>
-        </Info>
-        <article style={{ marginTop: '60px' }}>
-          <MarkDown html={html} />
-        </article>
+    <>
+      <Header isTopArea={isTopArea} />
+      <PageWrap>
+        <Post>
+          {<Cover src={cover.publicURL} alt={`${title} 커버`} style={{ margin: '12px 0 4px' }} />}
+          <Title style={{ margin: '12px 0 6px' }}>{title}</Title>
+          <Info style={{ marginTop: '12px' }}>
+            {dayjs(date).format('YYYY년 M월 D일')} · <em>{`< ${category} >`}</em>
+          </Info>
+          <article style={{ marginTop: '60px' }}>
+            <MarkDown html={html} />
+          </article>
+        </Post>
+        <TOC tableOfContents={tableOfContents} />
         <CommentsWrapper>
           <Comments />
         </CommentsWrapper>
-      </Post>
-      <TOC tableOfContents={tableOfContents} />
-    </PageWrap>
+      </PageWrap>
+    </>
   )
 }
 
