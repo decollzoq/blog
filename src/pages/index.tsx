@@ -1,13 +1,14 @@
 import { graphql, PageProps } from 'gatsby'
 import styled from '@emotion/styled'
 import { Color } from 'src/models/color'
-import SideBar from 'src/components/SideBar'
+// import SideBar from 'src/components/SideBar'
 
 import Header from '../components/Header'
 import Footer from 'src/components/Footer'
-import PostList from 'src/components/Main/PostList'
+import PostList from 'src/components/Post/PostList'
+import { HeadingArea, CategoryName, CountOfPosts } from 'src/models/PostStyles'
 import { PostSummary } from 'src/type'
-import { useEffect, useState, useRef } from 'react'
+import { useEffect, useState } from 'react'
 
 export default function IndexPage({ data }: PageProps<{ allMarkdownRemark: { nodes: PostSummary[] } }>) {
   const postList = data.allMarkdownRemark.nodes
@@ -18,6 +19,7 @@ export default function IndexPage({ data }: PageProps<{ allMarkdownRemark: { nod
     return counter
   }, {})
   const [isTopArea, setIsTopArea] = useState(true)
+  const [sidebarOpen, setSidebarOpen] = useState(false)
 
   useEffect(() => {
     const handleScroll = () => {
@@ -33,31 +35,61 @@ export default function IndexPage({ data }: PageProps<{ allMarkdownRemark: { nod
       window.removeEventListener('scroll', handleScroll)
     }
   }, [])
+
   return (
     <>
-      <Header isTopArea={isTopArea} />
-      <Layout>
-        <SideBar categories={categoryCount} />
-        <ContentArea>
+      <Header isTopArea={isTopArea} sidebarOpen={sidebarOpen} onToggleSidebar={() => setSidebarOpen((prev) => !prev)} />
+      <AreaWrapper>
+        {/* <SideBar categories={categoryCount} /> */}
+        <SideBarArea isOpen={sidebarOpen} />
+        <PostListArea>
+          <HeadingArea>
+            <CategoryName>All Posts</CategoryName>
+            <CountOfPosts>{postList.length} posts</CountOfPosts>
+          </HeadingArea>
           <PostList posts={postList} />
-        </ContentArea>
-      </Layout>
+        </PostListArea>
+      </AreaWrapper>
       <Footer />
     </>
   )
 }
 
-const Layout = styled.div`
-  display: grid;
-  grid-template-columns: 272px 1fr;
-  gap: 124px;
+const AreaWrapper = styled.div`
+  display: flex;
+  justify-content: center;
   width: 100%;
-  max-width: 1200px;
   background: ${Color.background};
 `
-const ContentArea = styled.main`
-  width: 1068px;
+const PostListArea = styled.main`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  max-width: 1000px;
   min-height: 80vh;
+  padding: 0 64px;
+`
+
+export const SideBarArea = styled.div<{ isOpen: boolean }>`
+  width: 200px;
+  flex: 0 0 200px;
+  height: 1200px;
+  background-color: ${Color.gray600};
+  position: fixed;
+  top: 70px;
+  left: 0;
+  transform: ${({ isOpen }) => (isOpen ? 'translateX(0)' : 'translateX(-100%)')};
+  transition: transform 0.5s ease-in-out;
+  z-index: 1000;
+
+  @media (min-width: 480px) and (max-width: 767px) {
+    width: 50%;
+  }
+  @media (max-width: 479px) {
+    width: 100%;
+  }
 `
 
 export const pageQuery = graphql`
