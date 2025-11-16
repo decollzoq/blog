@@ -40,9 +40,10 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: "20"
-      - name: Enable corepack
-        if: ${{ steps.detect-package-manager.outputs.manager == 'pnpm' }}
-        run: corepack enable
+      - name: Enable pnpm via corepack
+        run: |
+          corepack enable
+          corepack prepare pnpm@latest --activate
       - name: Setup Pages
         id: pages
         uses: actions/configure-pages@v4
