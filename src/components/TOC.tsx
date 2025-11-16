@@ -1,21 +1,60 @@
 import { Color } from 'src/models/color'
 import styled from '@emotion/styled'
-import React from 'react'
+import React, { useEffect, useRef } from 'react'
 
 export default function TOC({ tableOfContents }: { tableOfContents: string }) {
+  const tocRef = useRef<HTMLDivElement | null>(null)
+  useEffect(() => {
+    const el = tocRef.current
+    if (!el) {
+      return
+    }
+
+    const handleClick = (event: MouseEvent) => {
+      const target = event.target as HTMLElement
+      const anchor = target.closest('a') as HTMLAnchorElement | null
+      if (!anchor) {
+        return
+      }
+
+      const href = anchor.getAttribute('href')
+      if (!href || !href.startsWith('#')) {
+        return
+      }
+
+      event.preventDefault()
+      const id = decodeURIComponent(href.slice(1))
+      const heading = document.getElementById(id)
+      if (!heading) {
+        return
+      }
+
+      heading.scrollIntoView({ behavior: 'smooth', block: 'start' })
+
+      const newUrl = `${window.location.pathname}#${href}`
+      window.history.replaceState(null, '', newUrl)
+    }
+
+    el.addEventListener('click', handleClick)
+
+    return () => {
+      el.removeEventListener('click', handleClick)
+    }
+  }, [])
   return (
-    <TOCWrapper>
-      <div dangerouslySetInnerHTML={{ __html: tableOfContents }} />
-    </TOCWrapper>
+    <TOCContainer>
+      <div ref={tocRef} dangerouslySetInnerHTML={{ __html: tableOfContents }} />
+    </TOCContainer>
   )
 }
 
-const TOCWrapper = styled.aside`
+const TOCContainer = styled.aside`
   position: fixed;
-  top: 280px;
+  top: 200px;
   right: 16px;
   width: 220px;
-  max-height: 600px;
+  height: fit-content;
+  max-height: 400px;
   overflow: auto;
   padding: 12px 16px;
   border-radius: 12px;

@@ -1,9 +1,6 @@
 import React from 'react'
 import styled from '@emotion/styled'
 import { Color } from 'src/models/color'
-import { Title } from './Header'
-
-const formatCount = (n: number) => (n > 99 ? '99+' : String(n))
 
 type Props = {
   categories: Record<string, number>
@@ -16,14 +13,14 @@ export default function SideBar({ categories }: Props) {
     <SideBarWrapper>
       <CategoryListWrapper>
         <CategoryItem data-active='true'>
-          <Title>🏠️ All Posts</Title>
-          <Badge data-active='true'> {formatCount(totalCount)}</Badge>
+          All Posts
+          <Badge data-active='true'> {totalCount}</Badge>
         </CategoryItem>
 
         {Object.entries(categories).map(([category, count]) => (
           <CategoryItem key={category} data-active='false'>
-            <Title>{category}</Title>
-            <Badge data-active='false'>{formatCount(count)}</Badge>
+            {category}
+            <Badge data-active='false'>{count}</Badge>
           </CategoryItem>
         ))}
       </CategoryListWrapper>
@@ -32,12 +29,13 @@ export default function SideBar({ categories }: Props) {
 }
 
 const SideBarWrapper = styled.aside`
-  position: relative;
   display: flex;
   justify-content: center;
   padding-top: 12px;
   width: 272px;
+  height: 100%;
   background-color: ${Color.background};
+  border: 1px solid ${Color.gray600};
 `
 
 const CategoryListWrapper = styled.div`
@@ -45,6 +43,7 @@ const CategoryListWrapper = styled.div`
   width: 232px;
   max-height: 768px;
   overflow-y: auto;
+  border: 1px solid ${Color.gray600};
 `
 
 const CategoryItem = styled.button`
@@ -59,11 +58,14 @@ const CategoryItem = styled.button`
   background-color: ${Color.background};
   justify-content: space-between;
   align-items: center;
-
-  cursor: pointer;
   &[data-active='true'] {
-    background-color: ${Color.gray500};
+    font-size: 20px;
+    color: ${Color.primary0};
   }
+  font-size: 16px;
+  font-weight: bold;
+  color: ${Color.gray400};
+  cursor: pointer;
 `
 
 const Badge = styled.div`
