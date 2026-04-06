@@ -19,3 +19,12 @@ server/out/
 .idea/
 .vscode/
 *.swp
+
+# Gradle temporary files
+server/.gradle/
+server/build/
+server/bin/
+
+# IntelliJ settings
+server/.idea/
+server/*.iml
