@@ -1,6 +1,6 @@
 export interface Post {
     id: number;
-    thumbnaili: string;
+    thumbnail: string;
     title: string;
     date: string;
     category: string;
