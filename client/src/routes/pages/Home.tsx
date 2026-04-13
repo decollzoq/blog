@@ -1,8 +1,10 @@
 import { categoryList, MOCK_POSTS } from "../../data/posts";
 import { useState } from "react";
-
+import { Post } from "../../types/post";
 import { IoIosArrowBack } from "react-icons/io";
 import { IoIosArrowForward } from "react-icons/io";
+
+import PostCard from "../../components/PostCard";
 
 function Home() {
     const [category, setCategory] = useState("All");
@@ -108,36 +110,8 @@ function Home() {
 
                 <section className="mb-16 max-w-4xl mx-auto">
                     <div className="container grid grid-cols-1 sm:grid-cols-2 gap-12 items-center max-w-full ">
-                        {filteredPosts.map((p) => (
-                            <article
-                                key={p.id}
-                                className="text-gray-900 hover:text-primary hover:-translate-y-2 transition-transform duration-500"
-                            >
-                                <a href="/about/{p.id}">
-                                    <div className="container flex flex-col">
-                                        <img
-                                            src={p.thumbnail}
-                                            alt={p.title}
-                                            className="w-full h-3/4 objext-cover rounded-2xl"
-                                        />
-                                        <div className="mt-4">
-                                            <h3 className="text-xl mb-3 font-bold">
-                                                {p.title}
-                                            </h3>
-                                            <div className="flex space-x-2 mb-2">
-                                                {p.tags.map((t, tdx) => (
-                                                    <span className="bg-gray-100 rounded-lg text-xs text-gray-600 font-light p-2">
-                                                        # {t}
-                                                    </span>
-                                                ))}
-                                            </div>
-                                            <p className="text-gray-600 text-sm">
-                                                {p.date}
-                                            </p>
-                                        </div>
-                                    </div>
-                                </a>
-                            </article>
+                        {filteredPosts.map((p: Post) => (
+                            <PostCard key={p.id} post={p} />
                         ))}
                     </div>
                 </section>

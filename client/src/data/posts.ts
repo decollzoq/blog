@@ -8,7 +8,7 @@ export const MOCK_POSTS: Post[] = [
         thumbnail:
             "https://images.unsplash.com/photo-1633356122544-f134324a6cee?w=800&h=500&fit=crop",
         title: "일 번 포스트",
-        date: "2026-04-06",
+        date: "2026.04.06",
         category: "개발",
         tags: ["React", "TypeScript", "Tailwind"],
         content: `
@@ -65,7 +65,7 @@ React와 TypeScript는 처음에는 학습 곡선이 있을 수 있지만, 프�
         thumbnail:
             "https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=800&h=500&fit=crop",
         title: "이 번 포스트",
-        date: "2026-04-07",
+        date: "2026.04.07",
         category: "리액트",
         tags: ["React", "TypeScript"],
         content: `# 제주도 겨울 여행기
@@ -108,7 +108,7 @@ React와 TypeScript는 처음에는 학습 곡선이 있을 수 있지만, 프�
         thumbnail:
             "https://images.unsplash.com/photo-1507721999472-8ed4421c4af2?w=800&h=500&fit=crop",
         title: "삼 번 포스트",
-        date: "2026-04-08",
+        date: "2026.04.08",
         category: "개발",
         tags: ["React", "TypeScript", "Tailwind"],
         content: `
