@@ -23,13 +23,12 @@ function Home() {
         if (currentSlide === 0) setCurrentSlide(2);
         else setCurrentSlide(currentSlide - 1);
     }
-
     return (
-        <div className="dark:bg-gray-900 transition-colors duration-500">
+        <div>
             <main className="container max-w-4xl mx-auto px-6 py-12">
                 <section className={`${category !== "All" && "hidden"}`}>
                     <div className="container max-w-full relative aspect-[21/9] rounded-2xl overflow-hidden bg-gray-100 dark:bg-gray-500">
-                        <a href="/about/{slidePost.id}">
+                        <a href={`/posts/${slidePost.id}`}>
                             <img
                                 src={slidePost.thumbnail}
                                 alt={slidePost.title}

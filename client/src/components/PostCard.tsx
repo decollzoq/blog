@@ -1,4 +1,5 @@
 import { Post } from "../types/post";
+import TagList from "./PostTagList";
 
 function PostCard({ post }: { post: Post }) {
     return (
@@ -6,13 +7,13 @@ function PostCard({ post }: { post: Post }) {
             key={post.id}
             className="text-gray-900 hover:text-primary hover:-translate-y-2 transition-transform duration-500"
         >
-            <a href="/about/{p.id}">
+            <a href={`/posts/${post.id}`}>
                 <div className="container flex flex-col">
                     <div className="relative">
                         <img
                             src={post.thumbnail}
                             alt={post.title}
-                            className="w-full h-3/4 objext-cover rounded-2xl"
+                            className="w-full h-3/4 object-cover rounded-2xl"
                         />
                         <div className="px-3 py-1 absolute top-3 left-3 bg-gray-600/50 backdrop-blur-sm rounded-2xl text-gray-50 text-sm">
                             {post.category}

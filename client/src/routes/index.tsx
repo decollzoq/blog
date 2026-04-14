@@ -1,6 +1,6 @@
 import { createBrowserRouter, RouterProvider } from "react-router";
 import Home from "./pages/Home";
-import About from "./pages/About";
+import PostDetails from "./pages/PostDetails";
 import DefaultLayout from "./layouts/Default";
 const router = createBrowserRouter([
     {
@@ -11,8 +11,8 @@ const router = createBrowserRouter([
                 element: <Home />,
             },
             {
-                path: "/about",
-                element: <About />,
+                path: "/posts/:postId",
+                element: <PostDetails />,
             },
         ],
     },
