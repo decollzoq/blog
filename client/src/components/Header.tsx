@@ -6,11 +6,11 @@ function Header() {
     const { isDark, toggle } = useDarkMode();
 
     return (
-        <header className="sticky top-0 bg-white text-gray-900 dark:bg-gray-900 dark:text-gray-50 z-10 transition-colors duration-500">
+        <header className="sticky top-0 bg-white dark:bg-gray-900 z-10 transition-colors duration-500">
             <nav className="container max-w-4xl mx-auto px-6 py-3 flex justify-between">
-                <div className="flex items-center">
+                <a href="/" className="flex items-center">
                     <h1 className="font-bold text-2xl">SEON</h1>
-                </div>
+                </a>
                 <div className="flex gap-6 place-items-center ">
                     <div className="hover:text-primary transition-colors duration-500">
                         <a href="/" className="text-lg">
