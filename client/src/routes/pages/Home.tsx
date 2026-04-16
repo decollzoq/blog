@@ -115,8 +115,6 @@ function Home() {
                     </div>
                 </section>
             </main>
-
-            <footer className="bg-gray100">footer</footer>
         </div>
     );
 }
