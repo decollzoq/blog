@@ -5,13 +5,13 @@ function Footer() {
                 <div className="flex space-x-6 items-center">
                     <a
                         href="https://github.com/decollzoq"
-                        className="hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg p-2 transition-colors duration-500"
+                        className="hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg p-2"
                     >
                         GitHub{" "}
                     </a>
                     <a
                         href="https://velog.io/@decollzoq/posts"
-                        className="hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg p-2 transition-colors duration-500"
+                        className="hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg p-2"
                     >
                         Velog
                     </a>

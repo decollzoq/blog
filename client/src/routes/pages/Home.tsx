@@ -80,11 +80,11 @@ function Home() {
                 <section className="my-12 flex space-x-3 items-center font-semibold max-w-4xl">
                     <button
                         onClick={() => setCategory("All")}
-                        className={`h-10 w-16 rounded-3xl transition-colors duration-500
+                        className={`h-10 w-16 rounded-3xl 
                         ${
                             category === "All"
-                                ? "bg-primary text-gray-50"
-                                : "bg-gray-100 text-gray-600 hover:bg-gray-150 dark:bg-gray-700 dark:text-gray-200 dark:hover:bg-gray-300"
+                                ? "bg-primary text-gray-50 dark:bg-primary-dark"
+                                : "bg-gray-50 text-gray-600 hover:bg-gray-100 dark:bg-gray-800 dark:text-gray-200 dark:hover:bg-gray-700"
                         }`}
                     >
                         All
@@ -94,11 +94,11 @@ function Home() {
                             <button
                                 key={idx}
                                 onClick={() => setCategory(c)}
-                                className={`h-10 w-16 rounded-3xl transition-colors duration-500
+                                className={`h-10 w-16 rounded-3xl
                         ${
                             category === c
-                                ? "bg-primary text-gray-50"
-                                : "bg-gray-100 text-gray-600 hover:bg-gray-150 dark:bg-gray-700 dark:text-gray-200 dark:hover:bg-gray-300"
+                                ? "bg-primary text-gray-50 dark:bg-primary-dark"
+                                : "bg-gray-50 text-gray-600 hover:bg-gray-100 dark:bg-gray-800 dark:text-gray-200 dark:hover:bg-gray-700"
                         }`}
                             >
                                 {c}
@@ -108,7 +108,7 @@ function Home() {
                 </section>
 
                 <section className="mb-16 max-w-4xl mx-auto">
-                    <div className="container grid grid-cols-1 sm:grid-cols-2 gap-12 items-center max-w-full ">
+                    <div className="container grid grid-cols-1 sm:grid-cols-2 gap-12 items-start max-w-full ">
                         {filteredPosts.map((p: Post) => (
                             <PostCard key={p.id} post={p} />
                         ))}
