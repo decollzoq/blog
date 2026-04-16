@@ -5,7 +5,7 @@ function PostCard({ post }: { post: Post }) {
     return (
         <article
             key={post.id}
-            className="text-gray-900 hover:text-primary hover:-translate-y-2 transition-transform duration-500"
+            className="hover:text-primary hover:-translate-y-2 transition-transform duration-500"
         >
             <a href={`/posts/${post.id}`}>
                 <div className="container flex flex-col">
@@ -20,14 +20,15 @@ function PostCard({ post }: { post: Post }) {
                         </div>
                     </div>
                     <div className="mt-4">
-                        <h3 className="text-xl mb-3 font-bold dark:text-gray-50 transition-colors duration-500">
+                        <h3 className="text-xl mb-3 font-bold ">
                             {post.title}
                         </h3>
+
                         <div className="flex space-x-2 mb-2">
                             {post.tags.map((tag, tdx) => (
                                 <span
                                     key={tdx}
-                                    className="bg-gray-100 rounded-lg text-xs text-gray-600 dark:text-gray-50 dark:bg-gray-800 font-light px-2 py-1 transition-colors duration-500"
+                                    className="bg-gray-50 rounded-xl text-xs text-gray-500 dark:text-gray-400 dark:bg-gray-800 font-light px-2 py-1"
                                 >
                                     # {tag}
                                 </span>
