@@ -32,8 +32,13 @@ function PostDetails() {
 
                 <PostTagList tags={post.tags} />
 
-                <footer className="mb-12 flex flex-col mt-12 text-gray-800 text-sm text-center font-normal dark:text-gray-300 border-t-gray-200 dark:border-t-gray-600 pt-8 space-y-4 border-t-[1px] transition-colors duration-500">
-                    <h1>{post.category} 카테고리의 다른 글</h1>
+                <footer className="mb-12 flex flex-col mt-12 text-gray-800 text-sm text-center font-normal dark:text-gray-300 border-t-gray-200 dark:border-t-gray-600 pt-8 space-y-4 border-t-[1px]">
+                    <h1>
+                        <span className="text-primary-dark">
+                            {post.category}{" "}
+                        </span>
+                        카테고리의 다른 글
+                    </h1>
                     <PostNavigation
                         prevPost={sameCategoryPosts[postIdx - 1]}
                         nextPost={sameCategoryPosts[postIdx + 1]}

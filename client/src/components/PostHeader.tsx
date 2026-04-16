@@ -6,10 +6,10 @@ function PostHeader({ post }: Props) {
     return (
         <header className="flex flex-col items-start gap-4 mb-8">
             <div className="flex flex-row items-center gap-3">
-                <div className="text-sm bg-primary text-gray-50 rounded-3xl px-3 py-1 dark:bg-primary-dark transition-colors duration-500">
+                <div className="text-sm bg-primary text-gray-50 rounded-3xl px-3 py-1 dark:bg-primary-dark">
                     {post.category}
                 </div>
-                <div className="text-sm text-gray-600 dark:text-gray-400 transition-colors duration-500">
+                <div className="text-sm text-gray-600 dark:text-gray-400">
                     {post.date}
                 </div>
             </div>

@@ -13,11 +13,11 @@ function PostNavigation({ prevPost, nextPost }: NavigationProps) {
                 {prevPost && (
                     <a
                         href={`/posts/${prevPost.id}`}
-                        className="p-4 flex space-x-4 items-center w-full text-gray-900 dark:text-gray-50 dark:hover:bg-gray-700 hover:bg-gray-50 rounded-lg transition-colors duration-500 hover:text-primary"
+                        className="p-4 flex space-x-4 items-center w-full text-gray-900 dark:text-gray-50 dark:hover:bg-gray-700 hover:bg-gray-50 rounded-lg hover:text-primary"
                     >
                         <IoIosArrowBack className="text-2xl" />
                         <div className="flex flex-col items-start gap-1 min-w-0">
-                            <div className="text-gray-500 dark:text-gray-300 transition-colors duration-500 text-sm">
+                            <div className="text-gray-500 dark:text-gray-300 text-sm">
                                 이전 글
                             </div>
                             <div className="w-full text-xl leading-10 text-start truncate ">
@@ -32,10 +32,10 @@ function PostNavigation({ prevPost, nextPost }: NavigationProps) {
                 {nextPost && (
                     <a
                         href={`/posts/${nextPost.id}`}
-                        className="p-4 flex space-x-4 items-center w-full justify-end text-gray-900 dark:text-gray-50 dark:hover:bg-gray-700 hover:bg-gray-50 rounded-lg transition-colors duration-500 hover:text-primary"
+                        className="p-4 flex space-x-4 items-center w-full justify-end text-gray-900 dark:text-gray-50 dark:hover:bg-gray-700 hover:bg-gray-50 rounded-lg hover:text-primary"
                     >
                         <div className="flex flex-col items-end gap-1 min-w-0">
-                            <h2 className="text-gray-500 dark:text-gray-300 transition-colors duration-500 text-sm">
+                            <h2 className="text-gray-500 dark:text-gray-300  text-sm">
                                 다음 글
                             </h2>
                             <p className="w-full text-xl leading-10 text-end truncate">
