@@ -7,6 +7,7 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Document(collection = "posts")
 @Getter
@@ -19,7 +20,7 @@ public class Post {
     private String content;
     private String category;
     private String thumbnail;
-
+    private List<String> tags;
     @JsonFormat(pattern = "yyyy.MM.dd", timezone = "Asia/Seoul")
     private LocalDateTime createdAt = LocalDateTime.now();
 }
