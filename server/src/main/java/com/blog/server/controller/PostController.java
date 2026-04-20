@@ -46,8 +46,13 @@ public class PostController {
     }
 
     @GetMapping("/categories")
-    public List<String> getCategories(){
-        return postRepository.findDistinctCategories();
+    public List<String> getCategoryList(){
+        return postRepository.findAll()
+                .stream()
+                .map(Post::getCategory)
+                .distinct()
+                .filter(c -> c != null)
+                .toList();
     }
 
 }
