@@ -1,6 +1,7 @@
 package com.blog.server.controller;
 
 import com.blog.server.model.Post;
+import com.blog.server.model.PostSummary;
 import com.blog.server.repository.PostRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -23,7 +24,7 @@ public class PostController {
         if(category == null || category.equalsIgnoreCase("All")){
             return ResponseEntity.ok(postRepository.findAllByOrderByCreatedAtDesc());
         }
-        List<Post> filteredPost = postRepository.findAllByCategoryOrderByCreatedAtDesc(category);
+        List<PostSummary> filteredPost = postRepository.findAllByCategoryOrderByCreatedAtDesc(category);
         if(filteredPost.isEmpty()){
             return ResponseEntity.badRequest().body("잘못된 카테고리명입니다: " + category);
         }
@@ -31,7 +32,7 @@ public class PostController {
     }
 
     @GetMapping("/featured")
-    public List<Post> getFeatured(){
+    public List<PostSummary> getFeatured(){
         return postRepository.findTop3ByOrderByCreatedAtDesc();
     }
 
