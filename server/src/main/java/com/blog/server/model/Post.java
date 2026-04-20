@@ -1,5 +1,6 @@
 package com.blog.server.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
@@ -18,5 +19,7 @@ public class Post {
     private String content;
     private String category;
     private String thumbnail;
+
+    @JsonFormat(pattern = "yyyy.MM.dd", timezone = "Asia/Seoul")
     private LocalDateTime createdAt = LocalDateTime.now();
 }
