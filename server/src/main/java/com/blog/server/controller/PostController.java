@@ -3,6 +3,8 @@ package com.blog.server.controller;
 import com.blog.server.model.Post;
 import com.blog.server.repository.PostRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
@@ -17,11 +19,15 @@ public class PostController {
     private final PostRepository postRepository;
 
     @GetMapping
-    public List<Post> getPosts(@RequestParam(value="category", required = false) String category) {
+    public ResponseEntity<?> getPosts(@RequestParam(value="category", required = false) String category) {
         if(category == null || category.equalsIgnoreCase("All")){
-            return postRepository.findAllByOrderByCreatedAtDesc();
+            return ResponseEntity.ok(postRepository.findAllByOrderByCreatedAtDesc());
         }
-        return postRepository.findAllByCategoryOrderByCreatedAtDesc(category);
+        List<Post> filteredPost = postRepository.findAllByCategoryOrderByCreatedAtDesc(category);
+        if(filteredPost.isEmpty()){
+            return ResponseEntity.badRequest().body("잘못된 카테고리명입니다: " + category);
+        }
+        return ResponseEntity.ok(filteredPost);
     }
 
     @GetMapping("/featured")
@@ -30,8 +36,11 @@ public class PostController {
     }
 
     @GetMapping("/{id}")
-    public Post getPost(@PathVariable("id") String id){
-        return postRepository.findById(id).orElseThrow();
+    public ResponseEntity<?> getPost(@PathVariable("id") String id) { // <Post>를 <?>로 변경
+        return postRepository.findById(id)
+                .<ResponseEntity<?>>map(post -> ResponseEntity.ok(post))
+                .orElseGet(() -> ResponseEntity.status(HttpStatus.NOT_FOUND)
+                        .body("해당 ID의 게시글을 찾을 수 없습니다: " + id));
     }
 
     @GetMapping("/{id}/navigation")
