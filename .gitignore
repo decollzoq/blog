@@ -28,3 +28,6 @@ server/bin/
 # IntelliJ settings
 server/.idea/
 server/*.iml
+
+# 서버 설정 파일
+server/src/main/resources/application.properties
