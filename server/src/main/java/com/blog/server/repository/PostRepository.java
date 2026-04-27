@@ -1,22 +1,20 @@
 package com.blog.server.repository;
 
 import com.blog.server.model.Post;
-import com.blog.server.model.PostSummary;
+import org.springframework.data.domain.Sort;
 import org.springframework.data.mongodb.repository.MongoRepository;
-import org.springframework.data.mongodb.repository.Query;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
 public interface PostRepository extends MongoRepository<Post, String> {
-    List<PostSummary> findAllByOrderByCreatedAtDesc(); // 모든 글 조회
-    List<PostSummary> findAllByCategoryOrderByCreatedAtDesc(String category); // 카테고리 필터링
-    List<PostSummary> findTop3ByOrderByCreatedAtDesc(); // 최근 3개 게시물 조회
+    Optional<Post> findBySlug(String slug);
+    List<Post> findByCategoryIdOrderByCreatedAtDesc(String categoryId);
+    List<Post> findAllByOrderByCreatedAtDesc();
+    List<Post> findTop3ByOrderByCreatedAtDesc();
 
-    @Query(value = "{}", fields = "{'category' : 1}")
-    List<String> findDistinctCategories(); // 모든 카테고리 조회
-
-    // 이전글 / 다음글 용
-    Optional<PostSummary> findFirstByCategoryAndIdLessThanOrderByIdDesc(String category, String id);
-    Optional<PostSummary> findFirstByCategoryAndIdGreaterThanOrderByIdAsc(String category, String id);
+    // 이전글 / 다음글
+    Optional<Post> findFirstByCategoryIdAndCreatedAtBeforeOrderByCreatedAtDesc(String categoryId, LocalDateTime createdAt);
+    Optional<Post> findFirstByCategoryIdAndCreatedAtAfterOrderByCreatedAtAsc(String categoryId, LocalDateTime createdAt);
 }
