@@ -31,3 +31,6 @@ server/*.iml
 
 # 서버 설정 파일
 server/src/main/resources/application.properties
+
+# 클라이언트 설정 파일
+.env
