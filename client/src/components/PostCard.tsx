@@ -1,13 +1,12 @@
-import { Post } from "../types/post";
-import TagList from "./PostTagList";
+import { PostSummary } from "../types/post";
 
-function PostCard({ post }: { post: Post }) {
+function PostCard({ post }: { post: PostSummary }) {
     return (
         <article
             key={post.id}
             className="hover:text-primary hover:-translate-y-2 transition-transform duration-500"
         >
-            <a href={`/posts/${post.id}`}>
+            <a href={`/posts/${post.slug}`}>
                 <div className="container flex flex-col">
                     <div className="relative">
                         <img
@@ -16,7 +15,7 @@ function PostCard({ post }: { post: Post }) {
                             className="w-full h-3/4 object-cover rounded-2xl"
                         />
                         <div className="px-3 py-1 absolute top-3 left-3 bg-gray-600/50 backdrop-blur-sm rounded-2xl text-gray-50 text-sm">
-                            {post.category}
+                            {post.categoryName}
                         </div>
                     </div>
                     <div className="mt-4">
@@ -35,7 +34,9 @@ function PostCard({ post }: { post: Post }) {
                             ))}
                         </div>
                         <p className="text-gray-600 text-sm dark:text-gray-400">
-                            {post.date}
+                            {new Date(post.createdAt).toLocaleDateString(
+                                "ko-KR",
+                            )}
                         </p>
                     </div>
                 </div>
