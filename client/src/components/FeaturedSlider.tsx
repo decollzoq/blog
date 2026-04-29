@@ -1,10 +1,10 @@
 import { IoIosArrowBack } from "react-icons/io";
 import { IoIosArrowForward } from "react-icons/io";
-import { Post } from "../types/post";
+import { PostSummary } from "../types/post";
 import { useState } from "react";
 
 interface FeaturedSliderProps {
-    posts: Post[];
+    posts: PostSummary[];
 }
 
 function FeaturedSlider({ posts }: FeaturedSliderProps) {
@@ -14,22 +14,25 @@ function FeaturedSlider({ posts }: FeaturedSliderProps) {
         setCurrentSlide((prev) => (prev === posts.length - 1 ? 0 : prev + 1));
     }
     function prevCard() {
-        setCurrentSlide((prev) => (prev === 0 ? posts.length - 1 : prev + 1));
+        setCurrentSlide((prev) => (prev === 0 ? posts.length - 1 : prev - 1));
     }
     return (
         <div className="container max-w-full relative aspect-[21/9] rounded-2xl overflow-hidden bg-gray-100 dark:bg-gray-500">
-            <a href={`/posts/${slidePost.id}`}>
+            <a href={`/posts/${slidePost.slug}`}>
                 <img
                     src={slidePost.thumbnail}
                     alt={slidePost.title}
                     className="object-cover w-full h-full"
                 />
+                <div className="absolute inset-0 bg-gradient-to-t from-gray-900/70 via-gray-900/20 to-transparent" />
                 <div className="absolute text-gray-50 bottom-0 px-9 py-8 flex sm:flex-col gap-2 items-center sm:items-start">
                     <h1 className="text-lg sm:text-2xl md:text-3xl font-bold text-gray-100">
                         {slidePost.title}
                     </h1>
                     <p className="text-sm sm:text-base md:text-lg text-gray-200">
-                        {slidePost.date}
+                        {new Date(slidePost.createdAt).toLocaleDateString(
+                            "ko-KR",
+                        )}
                     </p>
                 </div>
             </a>

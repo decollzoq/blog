@@ -1,14 +1,18 @@
 import React, { createContext, useContext, useState } from "react";
+import { Category } from "../../types/category";
 
 interface CategroyState {
-    category: string;
-    setCategory: React.Dispatch<React.SetStateAction<string>>;
+    category: Category;
+    setCategory: (category: Category) => void;
 }
 
 const CategoryContext = createContext<CategroyState | null>(null);
 
 export function CategoryProvider({ children }: { children: React.ReactNode }) {
-    const [category, setCategory] = useState("All");
+    const [category, setCategory] = useState<Category>({
+        slug: "all",
+        name: "All",
+    });
     return (
         <CategoryContext.Provider value={{ category, setCategory }}>
             {children}
