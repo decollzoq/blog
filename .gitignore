@@ -30,7 +30,11 @@ server/.idea/
 server/*.iml
 
 # 서버 설정 파일
-server/src/main/resources/application.properties
+node_modules/
+dist/
+.wrangler/
+.mf/
+.dev.vars
 
 # 클라이언트 설정 파일
 .env
