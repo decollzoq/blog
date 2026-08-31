@@ -1,4 +1,4 @@
-name = "server"
+name = "blog-server"
 main = "src/index.ts"
 compatibility_date = "2026-08-26"
 
