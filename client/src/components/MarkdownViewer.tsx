@@ -1,18 +1,18 @@
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
-import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
-import { oneDark } from "react-syntax-highlighter/dist/esm/styles/prism";
+import {Prism as SyntaxHighlighter} from "react-syntax-highlighter";
+import {oneDark} from "react-syntax-highlighter/dist/cjs/styles/prism";
 
 interface Props {
     content: string;
 }
-function MarkdownViewer({ content }: Props) {
+function MarkdownViewer({content}: Props) {
     return (
         <article className="prose my-12 dark:prose-invert max-w-none">
             <ReactMarkdown
                 remarkPlugins={[remarkGfm]}
                 components={{
-                    code({ className, children, node, ref, ...rest }) {
+                    code({className, children, node, ref, ...rest}) {
                         const match = /language-(\w+)/.exec(className || "");
                         return match ? (
                             <SyntaxHighlighter
