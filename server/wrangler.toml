@@ -9,4 +9,4 @@ compatibility_flags = ["nodejs_compat"]
 [[d1_databases]]
 binding = "DB"                                       # Hono 코드(c.env.DB)에서 접근할 변수명
 database_name = "blog-db"                            # npx wrangler d1 create 시 지정한 DB 이름
-database_id = "bc1d1b84-3a17-4aca-bb69-cb6dfd0c4b12" # 터미널 생성 결과로 나온 본인의 UUID 입력
+database_id = "cfccc391-e610-44fb-bf5a-a365f3f366c9" # 터미널 생성 결과로 나온 본인의 UUID 입력
